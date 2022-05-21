@@ -1,12 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import useFirebase from "../../Hooks/UseFirebase";
+import useAuth from "../../Hooks/UseAuth";
 import "./google.css";
 
 const GoogleLogin = () => {
 
-  const {signInWithGoogle} = useFirebase()
+  const {signInWithGoogle, signInPassword,authError} = useAuth()
   const {
     register,
     handleSubmit,
@@ -15,7 +15,8 @@ const GoogleLogin = () => {
   } = useForm();
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    signInPassword(e.email, e.password)
+    console.log(e);
   };
   return (
     <div className="m-4">
@@ -31,28 +32,28 @@ const GoogleLogin = () => {
             <br />
 
             <input
-              className="inStyle"
-              {...register("email", {
-                required: true,
-                pattern: /^[a-z0-9]+$/i,
-              })}
-              placeholder="Your Email"
-            />
-            {errors.firstName?.type === "required" && "First name is required"}
+            className="inStyle"
+            {...register("email")}
+            placeholder="Your Email"
+            required
+          />
+
+            
             <br />
             <input
-              className="inStyle"
-              {...register("password", { required: true })}
-              placeholder="Password"
-            />
-            {errors.lastName && "Last name is required"}
+            className="inStyle"
+            {...register("password", { required: true })}
+            placeholder="Password"
+            type={"password"}
+            required
+          />
 
             <br />
 
             <input
               className="reg-btn"
               type="submit"
-              value="Create an account"
+              value="Login"
             />
           </form>
 
@@ -75,6 +76,7 @@ const GoogleLogin = () => {
             />
             <span className="space">continue with google</span>
           </button>
+          {authError &&  <h6 style={{color: 'red'}}>Error</h6>}
         </div>
 
         </div>

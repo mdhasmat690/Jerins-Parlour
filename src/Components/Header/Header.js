@@ -2,10 +2,12 @@ import React from "react";
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import jerin from "../../Image_Icon/Group 33092.png";
+import useAuth from "../../Hooks/UseAuth";
 // import banner from "../../Image_Icon/Image/beautiful-young-asian-woman-touching-her-clean-face-with-fresh-healthy-skin-isolated-white-wall-beauty-cosmetics-facial-treatment-concept 1.png";
 import "./Header.css";
 
 const Header = () => {
+  const { user, logOut } = useAuth();
   return (
     <div style={{ backgroundColor: "#FFF8F5" }}>
       <>
@@ -46,9 +48,18 @@ const Header = () => {
                     Contact Us
                   </Link>
 
-                  <Link to="/googleLogin">
-                    <button className="header-btn">Login</button>
-                  </Link>
+                  <span style={{ color: "black" }} className="list-link">
+                    {" "}
+                    {user?.displayName}
+                  </span>
+
+                  {user?.email ? (
+                    <button onClick={logOut}>Logout</button>
+                  ) : (
+                    <Link to="/googleLogin">
+                      <button className="header-btn">Login</button>
+                    </Link>
+                  )}
                 </ul>
               </Navbar.Text>
             </Navbar.Collapse>
