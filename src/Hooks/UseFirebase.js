@@ -21,11 +21,12 @@ const useFirebase = () => {
   const auth = getAuth();
 
   /* crate account */
-  const createwithUserEmail = (email, password,name) => {
+  const createwithUserEmail = (email, password,name,location, navigate) => {
     setIsLoading(true)
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
+        const redirect_url = location?.state?.from || "/";
+        navigate(redirect_url);
         const user = userCredential.user;
         setUser(user);
         setAuthError("")
@@ -52,11 +53,12 @@ const useFirebase = () => {
   };
 
   /* signInWithEmailAndPassword  */
-  const signInPassword = (email, password) => {
+  const signInPassword = (email, password,location, navigate) => {
     setIsLoading(true)
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
+        const redirect_url = location?.state?.from || "/";
+        navigate(redirect_url);
         const user = userCredential.user;
         console.log(user);
         setAuthError("")
@@ -69,23 +71,16 @@ const useFirebase = () => {
   };
 
   /* Sign in with google */
-  const signInWithGoogle = () => {
+  /* const signInWithGoogle = () => {
     setIsLoading(true)
-    signInWithPopup(auth, Googleprovider)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-        setAuthError("")
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        setAuthError(error.message);
-        const email = error.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-      })
-      .finally(()=>setIsLoading(false));
+    signInWithPopup(auth, Googleprovider)  
+  }; */
+
+  const signInWithGoogle = () => {
+    setIsLoading(true);
+    return signInWithPopup(auth, Googleprovider);
   };
+
 
   /* Observer user state */
   useEffect(() => {
@@ -116,7 +111,8 @@ const useFirebase = () => {
   return {
     createwithUserEmail,
     signInPassword,
-    signInWithGoogle,
+     signInWithGoogle,
+   // handlegooglesignin,
     user,
     logOut,
     isLoading,

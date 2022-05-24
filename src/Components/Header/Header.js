@@ -43,9 +43,16 @@ const Header = () => {
                   <Link
                     style={{ color: "#474747" }}
                     className="list-link"
-                    to="googleLogin"
+                    to="about"
                   >
-                    Contact Us
+                    About Us
+                  </Link>
+                  <Link
+                    style={{ color: "#474747" }}
+                    className="list-link"
+                    to="dashBord"
+                  >
+                   DashBoard
                   </Link>
 
                   <span style={{ color: "black" }} className="list-link">

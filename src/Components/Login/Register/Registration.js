@@ -1,11 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/UseAuth";
 import "./registration.css";
 
 const Registration = () => {
   const {user,createwithUserEmail,isLoading} = useAuth()
+  const location = useLocation()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,

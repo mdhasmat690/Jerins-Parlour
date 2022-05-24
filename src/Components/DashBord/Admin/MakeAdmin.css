@@ -1,0 +1,42 @@
+.admin_style {
+  height: 305px;
+  margin-left: 25px;
+  background: #ffffff;
+  border-radius: 20px;
+}
+
+.make-style {
+  height: 518px;
+  left: 405px;
+  top: 82px;
+
+  background: #f4f7fc;
+}
+
+.input_admin_style {
+  border: none;
+  outline: none;
+  width: 45%;
+  height: 40px;
+  margin-top: 57.33px;
+  border-radius: 3.33333px;
+  border: 0.666667px solid #c9c9c9;
+}
+.input_admin_style::placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #c9c9c9;
+}
+
+.makeAdmin_style {
+  width: 108px;
+  height: 40px;
+  left: 826px;
+  top: 176px;
+
+  background: #f63e7b;
+  border-radius: 5px;
+  border: none;
+}

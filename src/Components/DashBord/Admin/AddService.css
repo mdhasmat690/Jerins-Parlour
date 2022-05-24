@@ -1,0 +1,52 @@
+.input_style {
+  border: none;
+  border: 1px solid #c9c9c9;
+  outline: none;
+  width: 40%;
+  height: 40px;
+  margin-left: -50%;
+}
+
+.input_text {
+  border: none;
+  border: 1px solid #c9c9c9;
+  outline: none;
+  width: 40%;
+  height: 121px;
+  left: 369px;
+  top: 265px;
+  margin-left: -50%;
+}
+
+.btn_service_style {
+  width: 108px;
+  height: 37px;
+  border: none;
+  background: #f63e7b;
+  border-radius: 5px;
+}
+
+.a ::placeholder{
+ width: 87.33px;
+height: 18.67px;
+left: 384px;
+top: 187px;
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+color: #C9C9C9;
+}
+
+.service_style{
+ 
+
+height: 24px;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+
+
+color: #232323;
+}

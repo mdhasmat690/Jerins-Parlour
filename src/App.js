@@ -8,6 +8,9 @@ import GoogleLogin from "./Components/Login/GoogleLogin";
 import Registration from "./Components/Login/Register/Registration";
 import Login from "./Components/Login/Login/Login";
 import AuthProvider from "./Context/AuthProvider";
+import About from "./Components/About/About";
+import PrivetRoute from "./Components/Login/Privet_Route/PrivetRoute";
+import DashBord from "./Components/DashBord/DashBord";
 
 function App() {
   return (
@@ -21,6 +24,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="home" element={<Home />} />
             <Route path="googleLogin" element={<GoogleLogin></GoogleLogin>} />
+            <Route path="about" element={<PrivetRoute><About/></PrivetRoute>}></Route>
+            <Route path="dashBord" element={<PrivetRoute><DashBord/></PrivetRoute>}></Route>
             <Route
               path="registration"
               element={<Registration></Registration>}

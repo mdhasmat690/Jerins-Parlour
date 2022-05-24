@@ -1,12 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/UseAuth";
 import "./google.css";
 
 const GoogleLogin = () => {
+  const { signInWithGoogle, signInPassword, authError } = useAuth();
+  const location = useLocation()
+  const navigate = useNavigate()
+  const redirect = location.state?.form || '/home'
 
-  const {signInWithGoogle, signInPassword,authError} = useAuth()
   const {
     register,
     handleSubmit,
@@ -15,12 +18,33 @@ const GoogleLogin = () => {
   } = useForm();
 
   const onSubmit = (e) => {
-    signInPassword(e.email, e.password)
+    signInPassword(e.email, e.password,location, navigate);
     console.log(e);
   };
+
+/*  const googleLogin = () =>{
+  signInWithGoogle()
+  .then((result) => {
+    navigate(redirect)
+  })
+  .catch((error) => {
+    const errorMessage = error.message;
+  })
+  // .finally(()=>setIsLoading(false));
+ } */
+ 
+ const googleLogin = () =>{
+  signInWithGoogle()
+  .then((result) => {
+    navigate(redirect)
+  })
+  .catch((error) => {
+    const errorMessage = error.message;
+  });
+}
+
   return (
     <div className="m-4">
-
       <div className="mb-5">
         <div className="all-border mx-auto py-5">
           <h2 className="sub-tittle">Please Login In</h2>
@@ -32,29 +56,24 @@ const GoogleLogin = () => {
             <br />
 
             <input
-            className="inStyle"
-            {...register("email")}
-            placeholder="Your Email"
-            required
-          />
-
-            
-            <br />
-            <input
-            className="inStyle"
-            {...register("password", { required: true })}
-            placeholder="Password"
-            type={"password"}
-            required
-          />
-
-            <br />
-
-            <input
-              className="reg-btn"
-              type="submit"
-              value="Login"
+              className="inStyle"
+              {...register("email")}
+              placeholder="Your Email"
+              required
             />
+
+            <br />
+            <input
+              className="inStyle"
+              {...register("password", { required: true })}
+              placeholder="Password"
+              type={"password"}
+              required
+            />
+
+            <br />
+
+            <input className="reg-btn" type="submit" value="Login" />
           </form>
 
           <div className="mt-2">
@@ -66,23 +85,19 @@ const GoogleLogin = () => {
             </span>
           </div>
 
-
           <div className="mt-4">
-          <button onClick={signInWithGoogle} className="signInStyle">
-            <img
-              className="googleLogo"
-              src="https://i.ibb.co/SxQwGMW/Group-571.png"
-              alt=""
-            />
-            <span className="space">continue with google</span>
-          </button>
-          {authError &&  <h6 style={{color: 'red'}}>Error</h6>}
-        </div>
-
+            <button onClick={googleLogin} className="signInStyle">
+              <img
+                className="googleLogo"
+                src="https://i.ibb.co/SxQwGMW/Group-571.png"
+                alt=""
+              />
+              <span className="space">continue with google</span>
+            </button>
+            {authError && <h6 style={{ color: "red" }}>Error</h6>}
+          </div>
         </div>
       </div>
-
-     
     </div>
   );
 };
