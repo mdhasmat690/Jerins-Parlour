@@ -8,7 +8,6 @@ const GoogleLogin = () => {
   const { signInWithGoogle, signInPassword, authError } = useAuth();
   const location = useLocation()
   const navigate = useNavigate()
-  const redirect = location.state?.form || '/home'
 
   const {
     register,
@@ -34,13 +33,7 @@ const GoogleLogin = () => {
  } */
  
  const googleLogin = () =>{
-  signInWithGoogle()
-  .then((result) => {
-    navigate(redirect)
-  })
-  .catch((error) => {
-    const errorMessage = error.message;
-  });
+  signInWithGoogle(location,navigate)
 }
 
   return (

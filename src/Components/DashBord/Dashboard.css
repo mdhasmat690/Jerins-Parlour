@@ -1,0 +1,18 @@
+.new_style{
+    margin-left: 20px;
+    text-align: start;   
+       
+}
+
+.active_clss .a .active{
+    color: red !important;
+}
+
+/* .link_color{
+    color: #878787;
+} */
+
+.link_color:active{
+    color: red !important;
+    
+}

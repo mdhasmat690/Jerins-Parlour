@@ -6,6 +6,7 @@ import "./registration.css";
 
 const Registration = () => {
   const {user,createwithUserEmail,isLoading} = useAuth()
+
   const location = useLocation()
   const navigate = useNavigate()
   const {
@@ -25,7 +26,7 @@ const Registration = () => {
 
     const name = e.firstName + " " + e.lastName;
     
-    createwithUserEmail(e.email, e.password, name)
+    createwithUserEmail(e.email, e.password, name, location, navigate)
     // e.target.value = " ";
     console.log(e.email, e.password,name);
     reset(); 

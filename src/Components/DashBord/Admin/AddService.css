@@ -4,7 +4,7 @@
   outline: none;
   width: 40%;
   height: 40px;
-  margin-left: -50%;
+  /* margin-left: -50%; */
 }
 
 .input_text {
@@ -26,11 +26,16 @@
   border-radius: 5px;
 }
 
+.sbad{
+  margin-left: 50px;
+  width: 80%;
+  border-radius: 10px;
+}
+
 .a ::placeholder{
- width: 87.33px;
-height: 18.67px;
+
 left: 384px;
-top: 187px;
+
 font-style: normal;
 font-weight: 400;
 font-size: 16px;

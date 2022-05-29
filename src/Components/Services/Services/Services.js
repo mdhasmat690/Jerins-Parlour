@@ -1,42 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import img1 from "../../../Image_Icon/Icon/Group 1372.png";
 import img2 from "../../../Image_Icon/Icon/Group 1373.png";
 import img3 from "../../../Image_Icon/Icon/Group 1374.png";
 
-const skins = [
+/* const skins = [
   {
-    id: 1,
     name: "Anti Age Face Treatment",
-    img: img1,
+    img: "https://i.ibb.co/QbXd3CB/Group-1372.png",
     desc: "We craft stunning and amazing web UI, using a well drrafted UX to fit your product.",
     price: "199",
   },
   {
-    id: 2,
-    middle: "midle style",
-    img: img2,
+    img: "https://i.ibb.co/yd84XDn/Group-1373.png",
     name: "Hair Color & Styleing",
     desc: "Amazing flyers, social media posts and brand representations that would make your brand stand out.",
     price: "99",
   },
   {
-    id: 3,
-    img: img3,
+    img: "https://i.ibb.co/ZXQG3ns/Group-1374.png",
     name: "Skin Care Treatment",
     desc: "With well written codes, we build amazing apps for all platforms, mobile and web apps in general.",
     price: "299",
   },
-];
+]; */
 
 const Services = () => {
+  const [service, setService] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/services?limit=3")
+      .then((res) => res.json())
+      .then((data) => {
+        setService(data);
+      });
+  }, []);
+
+ 
+
+
+
   const newSTyel = {
     fontWeight: 700,
     size: "34px",
     lineHeight: "43px",
   };
 
-  // "card border-0" style={ skin.middle ? newSTyel : {}}
   return (
     <div
       className="container"
@@ -46,15 +55,17 @@ const Services = () => {
         Our Awesome <span style={{ color: "#F63E7B" }}>Services </span>
       </h2>
       <div className="row row-cols-1 row-cols-md-3 g-4">
-        {skins.map((skin, index) => (
-          <>
-            <div className="col" key={index}>
+        {service?.map((skin, index) => (
+          <div key={index}>
+            <div className="col">
               <div
-                className={`${
-                  skin.middle ? "shadow-lg bg-body rounded  " : ""
-                }`}
+                className={
+                  skin._id === "6292836f8ac1ccfc534ac6df"
+                    ? "shadow-lg bg-body rounded "
+                    : ""
+                }
               >
-                <Link to="home">
+                <Link to={`/purches/${skin._id}`}>
                   <img
                     src={skin.img}
                     className="card-img-top mt-4 w-25"
@@ -80,11 +91,11 @@ const Services = () => {
                 </div>
               </div>
             </div>
-          </>
+          </div>
         ))}
       </div>
 
-      <button className="header-btn mt-5">Login</button>
+      <button className="header-btn mt-5">More Service</button>
     </div>
   );
 };

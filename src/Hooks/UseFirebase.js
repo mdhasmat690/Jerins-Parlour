@@ -17,22 +17,27 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading,setIsLoading] = useState(true);
   const [authError, setAuthError] = useState('')
+  const [admin, setAdmin] = useState(false);
+
+
   const Googleprovider = new GoogleAuthProvider();
   const auth = getAuth();
-
+console.log(user);
   /* crate account */
-  const createwithUserEmail = (email, password,name,location, navigate) => {
+  const createwithUserEmail = (email, password, name, location, navigate) => {
+    console.log(name);
     setIsLoading(true)
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const redirect_url = location?.state?.from || "/";
         navigate(redirect_url);
         const user = userCredential.user;
-        setUser(user);
+        // setUser(user);
         setAuthError("")
         const newUser = { email, displayName: name };
         setUser(newUser);
-        
+        saveUser(email, name, 'POST');
+
         updateProfile(auth.currentUser, {
           displayName: name,
         }).then(() => {
@@ -71,14 +76,20 @@ const useFirebase = () => {
   };
 
   /* Sign in with google */
-  /* const signInWithGoogle = () => {
-    setIsLoading(true)
-    signInWithPopup(auth, Googleprovider)  
-  }; */
 
-  const signInWithGoogle = () => {
+  const signInWithGoogle = (location, navigate) => {
+
     setIsLoading(true);
-    return signInWithPopup(auth, Googleprovider);
+    signInWithPopup(auth, Googleprovider)
+        .then((result) => {
+            const user = result.user;
+            saveUser(user.email, user.displayName, 'PUT');
+            setAuthError('');
+            const destination = location?.state?.from || '/';
+            navigate(destination);
+        }).catch((error) => {
+            setAuthError(error.message);
+        }).finally(() => setIsLoading(false));
   };
 
 
@@ -95,6 +106,15 @@ const useFirebase = () => {
     return unsubscribed;
   }, []);
 
+
+
+  useEffect(() => {
+    fetch(`https://infinite-peak-08437.herokuapp.com/users/${user?.email}`)
+        .then(res => res.json())
+        .then(data => setAdmin(data.admin))
+}, [user.email])
+
+
   /* Log out */
   const logOut = () => {
     setIsLoading(true);
@@ -108,6 +128,21 @@ const useFirebase = () => {
       .finally(()=>setIsLoading(false));
   };
 
+
+
+  const saveUser = (email, displayName,method) => {
+    const user = { email, displayName };
+    fetch("http://localhost:5000/users", {
+      method:  method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then();
+  };
+
+
+
   return {
     createwithUserEmail,
     signInPassword,
@@ -116,7 +151,8 @@ const useFirebase = () => {
     user,
     logOut,
     isLoading,
-    authError
+    authError,
+    admin
   };
 };
 

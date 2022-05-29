@@ -1,0 +1,124 @@
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useParams } from "react-router-dom";
+import useAuth from "../../../Hooks/UseAuth";
+import './purches.css';
+
+const Purches = () => {
+  const { id } = useParams();
+  const {user} = useAuth()
+  const [product, setProduct] = useState({});
+  const { register, handleSubmit, reset } = useForm();
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/services/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProduct(data);
+      });
+  }, [id]);
+
+
+  useEffect(() => {
+    reset();
+  }, [product]);
+
+  const onSubmit = (data) => {
+    fetch("http://localhost:5000/purches", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ ...data, status: "Pending" }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if (result.insertedId) {
+          alert("order processed successfully");
+          reset();
+        }
+      });
+      console.log(data); 
+  };
+  
+
+  return (
+    <div
+      className="container"
+      style={{ marginTop: "30px", backgroundColor: "#FFFFFF" }}
+    >
+      <div style={{width: '350px'}} className=" mx-auto">
+        <div>
+          <img src={product.img} className="card-img-top mt-4 w-25" alt="..." />
+
+          <div className="card-body">
+            <h5
+              style={{ fontWeight: "700", fontSize: "17px" }}
+              className="card-title"
+            >
+              {product.name}
+            </h5>
+            <span style={{ color: "#F63E7B", fontSize: "17px" }}>
+              $ {product.price}
+            </span>
+            <p
+              style={{ fontSize: "", lineHeight: " " }}
+              className="card-text"
+            >
+              {product.desc}
+            </p>
+          </div>
+        </div>
+       
+
+        <form  onSubmit={handleSubmit(onSubmit)}>
+            <input
+              className="purche_style mt-3"
+              defaultValue={user?.displayName}
+              {...register("name")}
+            />
+            <input
+              className="purche_style mt-3"
+              defaultValue={user?.email}
+              {...register("email")}
+            />
+            <input
+              className="purche_style mt-3 mx-auto "
+              defaultValue={product?.name}
+              {...register("productName", { required: true })}
+            />
+            <input
+              className="purche_style mt-3"
+              defaultValue={product?.desc}
+              placeholder="price"
+              {...register("price", { required: true })}
+            />
+
+            <input
+              className="purche_style h-5 mt-3"
+              defaultValue=""
+              placeholder="phone number"
+              {...register("phone", { required: true })}
+              required
+            />
+            <input
+              className="purche_style mt-3"
+              defaultValue=""
+              placeholder="location"
+              {...register("location", { required: true })}
+              required
+            />
+            <br />
+            <br />
+            <button className="mb-5 btn_service_style" type="submit" variant="contained">
+              purches
+            </button>
+          </form>
+
+      </div>
+    </div>
+  );
+};
+
+export default Purches;

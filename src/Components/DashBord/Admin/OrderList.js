@@ -1,9 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 
 const OrderList = () => {
+  const [products, setProducts] = useState();
+
+  useEffect(() => {
+    fetch("http://localhost:5000/purches")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+  console.log(products);
+
+   const shippedOrder = (id) => {
+    fetch(`http://localhost:5000/purches/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          const updatedProducts = products.map((product) => {
+            if (product._id === id) {
+              product.status = "Done";
+            }
+
+            return product;
+          });
+
+          setProducts(updatedProducts);
+        }
+      });
+  };
+ 
+
   return (
-    <div>
+    <div className="my-5">
       <div>
           <h3>OrderList</h3>
       </div>
@@ -11,95 +44,28 @@ const OrderList = () => {
         
         <tbody>
           <tr>
-            <td>1</td>
+            <td>#</td>
             <td>Mark</td>
             <td>Otto</td>
             <td>Mark</td>
-            <td style={{color: '#FF4545'}}>Otto</td>
            
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Jacob</td>
-            <td style={{color: '#009444'}}>Thornton</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Mark</td>
-            <td>Otto</td>
+
+          {products?.map((product, index) => (
+           <tr>
            
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Mark</td>
-            <td>Otto</td>
-           
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Mark</td>
-            <td>Otto</td>
-           
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Mark</td>
-            <td>Otto</td>
-           
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Mark</td>
-            <td>Otto</td>
-           
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-          </tr>
+           <td>{product.name}</td>
+           <td>{product.email}</td>
+           <td>{product.productName}</td>
+           <td 
+           style={product.status === "Pending"
+           ? {color: '#FF4545',cursor: 'pointer',fontWeight: '500'}:{color: '#009444',fontWeight: '500'}}
+
+                onClick={() => shippedOrder(product._id)}>{product.status}</td>
+         </tr>
+        ))}
+         
+         
         </tbody>
       </Table>
     </div>
