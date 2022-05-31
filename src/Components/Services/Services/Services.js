@@ -1,29 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import img1 from "../../../Image_Icon/Icon/Group 1372.png";
-import img2 from "../../../Image_Icon/Icon/Group 1373.png";
-import img3 from "../../../Image_Icon/Icon/Group 1374.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { BeatLoader, ScaleLoader } from "react-spinners";
 
-/* const skins = [
-  {
-    name: "Anti Age Face Treatment",
-    img: "https://i.ibb.co/QbXd3CB/Group-1372.png",
-    desc: "We craft stunning and amazing web UI, using a well drrafted UX to fit your product.",
-    price: "199",
-  },
-  {
-    img: "https://i.ibb.co/yd84XDn/Group-1373.png",
-    name: "Hair Color & Styleing",
-    desc: "Amazing flyers, social media posts and brand representations that would make your brand stand out.",
-    price: "99",
-  },
-  {
-    img: "https://i.ibb.co/ZXQG3ns/Group-1374.png",
-    name: "Skin Care Treatment",
-    desc: "With well written codes, we build amazing apps for all platforms, mobile and web apps in general.",
-    price: "299",
-  },
-]; */
+
 
 const Services = () => {
   const [service, setService] = useState([]);
@@ -46,6 +27,10 @@ const Services = () => {
     lineHeight: "43px",
   };
 
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
     <div
       className="container"
@@ -54,11 +39,14 @@ const Services = () => {
       <h2 style={newSTyel} className="mb-5">
         Our Awesome <span style={{ color: "#F63E7B" }}>Services </span>
       </h2>
-      <div className="row row-cols-1 row-cols-md-3 g-4">
+
+{service?.length ? 
+  <div className="row row-cols-1 row-cols-md-3 g-4">
         {service?.map((skin, index) => (
           <div key={index}>
             <div className="col">
               <div
+            data-aos="zoom-in-up"
                 className={
                   skin._id === "6292836f8ac1ccfc534ac6df"
                     ? "shadow-lg bg-body rounded "
@@ -94,6 +82,17 @@ const Services = () => {
           </div>
         ))}
       </div>
+      :<div className="mt-5">
+      <BeatLoader
+        size={15}
+        color={"#123abc"}
+      
+        speedMultiplier={1.5}
+      />
+    </div>
+}
+
+      
 
       <button className="header-btn mt-5">More Service</button>
     </div>

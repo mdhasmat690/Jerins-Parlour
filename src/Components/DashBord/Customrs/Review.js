@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
-// import "./AddService.css";
+import Swal from "sweetalert2";
 
 
 const Review = () => {
@@ -17,7 +17,13 @@ const Review = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
-          alert("New Product Added successfully");
+          Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Your review has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
           reset();
         }
       });

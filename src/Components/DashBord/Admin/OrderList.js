@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
+import { BeatLoader, ScaleLoader } from "react-spinners";
+import Swal from "sweetalert2";
 
 const OrderList = () => {
   const [products, setProducts] = useState();
@@ -9,7 +11,7 @@ const OrderList = () => {
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
-  console.log(products);
+ 
 
    const shippedOrder = (id) => {
     fetch(`http://localhost:5000/purches/${id}`, {
@@ -24,6 +26,22 @@ const OrderList = () => {
           const updatedProducts = products.map((product) => {
             if (product._id === id) {
               product.status = "Done";
+              const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              })
+              
+              Toast.fire({
+                icon: 'success',
+                title: 'Product Update successfully'
+              })
             }
 
             return product;
@@ -37,22 +55,23 @@ const OrderList = () => {
 
   return (
     <div className="my-5">
-      <div>
-          <h3>OrderList</h3>
+      <div className="my-3">
+          <h3 className="text-success">All OrderList</h3>
       </div>
+      {products?.length ?
       <Table responsive hover>
         
         <tbody>
           <tr>
             <td>#</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Mark</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Product Name</td>
            
           </tr>
 
           {products?.map((product, index) => (
-           <tr>
+           <tr key={index}>
            
            <td>{product.name}</td>
            <td>{product.email}</td>
@@ -67,7 +86,14 @@ const OrderList = () => {
          
          
         </tbody>
-      </Table>
+      </Table>:  <div className="mt-5">
+          <BeatLoader
+            size={15}
+            color={"#123abc"}
+            
+            speedMultiplier={1.5}
+          />
+        </div>}
     </div>
   );
 };

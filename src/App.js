@@ -6,7 +6,6 @@ import Home from "./Components/Sheared/Home/Home";
 import Footer from "./Components/Footer/Footer";
 import GoogleLogin from "./Components/Login/GoogleLogin";
 import Registration from "./Components/Login/Register/Registration";
-import Login from "./Components/Login/Login/Login";
 import AuthProvider from "./Context/AuthProvider";
 import About from "./Components/About/About";
 import PrivetRoute from "./Components/Login/Privet_Route/PrivetRoute";
@@ -17,91 +16,126 @@ import OrderList from "./Components/DashBord/Admin/OrderList";
 import MakeAdmin from "./Components/DashBord/Admin/MakeAdmin";
 import Review from "./Components/DashBord/Customrs/Review";
 import Purches from "./Components/Services/Purches/Purches";
+import AdminRoute from "./Components/DashBord/AdminRoute";
+import ManageService from "./Components/DashBord/Admin/ManageService";
+import { useEffect, useState } from "react";
+import { ScaleLoader } from "react-spinners";
+import Welcome from "./Components/DashBord/Welcome";
+import Erro from "./Components/Sheared/Home/Erro";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  console.log(loading);
+
   return (
     <div className="App">
-      <AuthProvider>
-        <Router>
-          <Header></Header>
-          {/* <Home></Home> */}
+      {loading ? (
+        <div className="mt-5">
+          <ScaleLoader
+            size={15}
+            color={"#123abc"}
+            loading={loading}
+            speedMultiplier={1.5}
+          />
+        </div>
+      ) : (
+        <AuthProvider>
+          <Router>
+            <Header></Header>
+            {/* <Home></Home> */}
 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="home" element={<Home />} />
-
-            <Route path="/dashBord" element={<DashBord />}>
-              {/*  <Route
-                path="/dashboard"
-                element={<DashBoardHome></DashBoardHome>}
-              ></Route> */}
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="home" element={<Home />} />
 
               <Route
-                path="/dashBord/service"
-                element={<AddService></AddService>}
+                path="/dashBord"
+                element={
+                  <PrivetRoute>
+                    <DashBord />
+                  </PrivetRoute>
+                }
+              >
+                <Route path="/dashBord" element={<Welcome></Welcome>}></Route>
+
+                <Route
+                  path="/dashBord/service"
+                  element={<AddService></AddService>}
+                ></Route>
+                <Route
+                  path="/dashBord/orderList"
+                  element={<OrderList></OrderList>}
+                ></Route>
+                <Route
+                  path="/dashBord/makeAdmin"
+                  element={
+                    <AdminRoute>
+                      <MakeAdmin></MakeAdmin>
+                    </AdminRoute>
+                  }
+                ></Route>
+                <Route
+                  path="/dashBord/review"
+                  element={<Review></Review>}
+                ></Route>
+                <Route
+                  path="/dashBord/bookingLisht"
+                  element={<BookingLisht></BookingLisht>}
+                ></Route>
+                <Route
+                  path="/dashBord/manageService"
+                  element={
+                    <ManageService>
+                      <BookingLisht></BookingLisht>
+                    </ManageService>
+                  }
+                ></Route>
+              </Route>
+
+              <Route path="googleLogin" element={<GoogleLogin></GoogleLogin>} />
+              <Route
+                path="about"
+                element={
+                  <PrivetRoute>
+                    <About />
+                  </PrivetRoute>
+                }
               ></Route>
               <Route
-                path="/dashBord/orderList"
-                element={<OrderList></OrderList>}
+                path="dashBord"
+                element={
+                  <PrivetRoute>
+                    <DashBord />
+                  </PrivetRoute>
+                }
               ></Route>
               <Route
-                path="/dashBord/makeAdmin"
-                element={<MakeAdmin></MakeAdmin>}
-              ></Route>
+                path="registration"
+                element={<Registration></Registration>}
+              />
+
               <Route
-                path="/dashBord/review"
-                element={<Review></Review>}
-              ></Route>
-              <Route
-                path="/dashBord/bookingLisht"
-                element={<BookingLisht></BookingLisht>}
-              ></Route>
+                path="/purches/:id"
+                element={
+                  <PrivetRoute>
+                    <Purches />
+                  </PrivetRoute>
+                }
+              />
 
+              <Route path="*" element={<Erro />} />
+            </Routes>
 
-
-
-            </Route>
-
-            <Route path="googleLogin" element={<GoogleLogin></GoogleLogin>} />
-            <Route
-              path="about"
-              element={
-                <PrivetRoute>
-                  <About />
-                </PrivetRoute>
-              }
-            ></Route>
-            <Route
-              path="dashBord"
-              element={
-                <PrivetRoute>
-                  <DashBord />
-                </PrivetRoute>
-              }
-            ></Route>
-            <Route
-              path="registration"
-              element={<Registration></Registration>}
-            />
-
-            <Route
-              path="/purches/:id"
-              element={
-                <PrivetRoute>
-                  <Purches />
-                </PrivetRoute>
-              }
-            />
-          </Routes>
-
-          <Footer></Footer>
-          <br />
-          <br />
-          <br />
-          <br />
-          {/* <BookingLisht></BookingLisht> */}
-        </Router>
-      </AuthProvider>
+            <Footer></Footer>
+          </Router>
+        </AuthProvider>
+      )}
     </div>
   );
 }

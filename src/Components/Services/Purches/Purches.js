@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useParams } from "react-router-dom";
 import useAuth from "../../../Hooks/UseAuth";
 import './purches.css';
+import Swal from "sweetalert2";
 
 const Purches = () => {
   const { id } = useParams();
@@ -35,7 +36,13 @@ const Purches = () => {
       .then((result) => {
         console.log(result);
         if (result.insertedId) {
-          alert("order processed successfully");
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your order has been send',
+            showConfirmButton: false,
+            timer: 1500
+          })
           reset();
         }
       });

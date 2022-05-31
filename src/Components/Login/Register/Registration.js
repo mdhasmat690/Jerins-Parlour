@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/UseAuth";
 import "./registration.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Swal from "sweetalert2";
+import { ClockLoader } from "react-spinners";
 
 const Registration = () => {
-  const {user,createwithUserEmail,isLoading} = useAuth()
+  const {user,createwithUserEmail,isLoading,authError} = useAuth()
 
   const location = useLocation()
   const navigate = useNavigate()
@@ -31,9 +35,45 @@ const Registration = () => {
     console.log(e.email, e.password,name);
     reset(); 
   };
+
+
+  if(user.email){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: 'Login Successfully'
+    })
+  }
+
+
+  if(authError){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Something went wrong!',
+      
+    })
+  }
+
+console.log(authError);
+  useEffect(() => {
+    AOS.init({ duration: 100 });
+  }, []);
+
   return (
     <div className="my-5">
-      <div className="all-border mx-auto py-5">
+      <div data-aos="zoom-in" className="all-border mx-auto py-5">
         <h2 className="sub-tittle">Create an account</h2>
        {!isLoading && <form
           style={{ marginTop: "20px" }}
@@ -83,8 +123,16 @@ const Registration = () => {
           <input className="reg-btn" type="submit" value="Create an account" />
         </form>}
 
-        {isLoading && <>Loading</>}
-        {user?.email &&  <>User create succefully</>}
+        {isLoading && <div className="my-5">
+          
+          <ClockLoader
+            size={40}
+            color={"#123abc"}
+            speedMultiplier={1.5}
+          />
+          
+          </div>}
+        
 
         <h6 className="alreay">
           Already have an account ?{" "}

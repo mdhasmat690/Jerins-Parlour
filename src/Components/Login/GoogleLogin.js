@@ -3,9 +3,11 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/UseAuth";
 import "./google.css";
+import Swal from "sweetalert2";
+
 
 const GoogleLogin = () => {
-  const { signInWithGoogle, signInPassword, authError } = useAuth();
+  const { signInWithGoogle, signInPassword, authError,user } = useAuth();
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -21,16 +23,7 @@ const GoogleLogin = () => {
     console.log(e);
   };
 
-/*  const googleLogin = () =>{
-  signInWithGoogle()
-  .then((result) => {
-    navigate(redirect)
-  })
-  .catch((error) => {
-    const errorMessage = error.message;
-  })
-  // .finally(()=>setIsLoading(false));
- } */
+
  
  const googleLogin = () =>{
   signInWithGoogle(location,navigate)
@@ -87,7 +80,6 @@ const GoogleLogin = () => {
               />
               <span className="space">continue with google</span>
             </button>
-            {authError && <h6 style={{ color: "red" }}>Error</h6>}
           </div>
         </div>
       </div>

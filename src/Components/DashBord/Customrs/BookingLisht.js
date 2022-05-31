@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BeatLoader } from "react-spinners";
 import useAuth from "../../../Hooks/UseAuth";
 import "./BookingList.css";
 
@@ -15,9 +16,9 @@ const BookingLisht = () => {
   console.log(orderlList);
   return (
     <div style={{ backgroundColor: "#F4F7FC" }}>
-      This is booking list
+     <h2 className="mt-3">booking list</h2>
       <br />
-      <div className="row row-cols-1 row-cols-md-3 g-4 booking_style_1 mt-4 ms-3">
+      {orderlList.length ? <div className="row row-cols-1 row-cols-md-3 g-4 booking_style_1 mt-4 ms-3">
         {orderlList?.map((orders, index) => (
           <div key={index} className="col">
               <div className="card booking_style mx-auto mb-3">
@@ -25,16 +26,16 @@ const BookingLisht = () => {
                   <img
                     style={{ width: "42px" }}
                     src="https://i.ibb.co/0yLvqGK/Group-1373.png"
-                    class="card-img-top"
+                    className="card-img-top"
                     alt="..."
                   />
 
                   <h4>{orders?.status}</h4>
                 </div>
-                <div class="card-body ">
-                  <h5 class="card-title">{orders?.productName}</h5>
+                <div className="card-body ">
+                  <h5 className="card-title">{orders?.productName}</h5>
                  
-                  <p class="card-text my-1">
+                  <p className="card-text my-1">
                     {orders?.price?.slice(0, 100)}
                   </p>
 
@@ -45,7 +46,12 @@ const BookingLisht = () => {
           
          
         ))}
-      </div>
+      </div> : <div className="my-5"><BeatLoader
+            size={15}
+            color={"#123abc"}
+            
+            speedMultiplier={1.5}
+          /></div>}
     </div>
   );
 };

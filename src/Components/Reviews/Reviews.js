@@ -86,8 +86,8 @@ const Reviews = () => {
       <div className="container">
         <AliceCarousel mouseTracking responsive={responsive}>
           {review.map((skin,index) => (
-            <>
-              <div key={index} style={{ backgroundColor: "white", marginRight: "35px" }}>
+            <div key={skin.name}>
+              <div style={{ backgroundColor: "white", marginRight: "35px" }}>
                 <div
                   style={{
                     display: "flex",
@@ -114,10 +114,10 @@ const Reviews = () => {
                       fontSize: '17px',
                       justifyContent: "left",
                       textAlign: "left",
-                    }} class="card-body">
+                    }} className="card-body">
 
                       <div>
-                  <p class="card-text">
+                  <p className="card-text">
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </p>
@@ -130,7 +130,7 @@ const Reviews = () => {
                 </div>
                 </div>  
               </div>
-            </>
+            </div>
           ))}
         </AliceCarousel>
       </div>

@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import engpic from "../../Image_Icon/Image/engin-akyurt-g-m8EDc4X6Q-unsplash 1.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ScrenCare = () => {
+
+  
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+  }, []);
+
   return (
     <div style={{ backgroundColor: "#FFF8F5" }}>
       <br />
@@ -12,7 +20,7 @@ const ScrenCare = () => {
       <br />
       <Container>
         <Row  className="container-width">
-          <Col  style={{
+          <Col data-aos="fade-right" style={{
               display: "flex",
               alignItems: "center",
               textAlign: "left",
@@ -20,6 +28,7 @@ const ScrenCare = () => {
             <img className="b-style" src={engpic} alt="" />
           </Col>
           <Col
+          data-aos="fade-left"
             style={{
               display: "flex",
               alignItems: "center",

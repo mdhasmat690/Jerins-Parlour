@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import banner from "../../../Image_Icon/Image/beautiful-young-asian-woman-touching-her-clean-face-with-fresh-healthy-skin-isolated-white-wall-beauty-cosmetics-facial-treatment-concept 1.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Banner = () => {
+
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+  }, []);
+
   return (
     <div style={{backgroundColor: "#FFF8F5"}}>
       <Container>
         <Row className="container-width">
           <Col
+          data-aos="fade-right"
             style={{
               display: "flex",
               alignItems: "center",
@@ -33,7 +41,7 @@ const Banner = () => {
               </div>
             </div>
           </Col>
-          <Col xs={12} md={6} lg={6}>
+          <Col data-aos="fade-left" xs={12} md={6} lg={6}>
             <img className="b-style" src={banner} alt="" />
           </Col>
         </Row>

@@ -10,7 +10,7 @@ const Appointment = () => {
       <br />
       <br />
       <br />
-      <div className=" container background-style mb-4">
+      <div data-aos="fade-up" className=" container background-style mb-4">
         <div className="row justify-content-center">
           <div className="col-12 col-md-8 d-flex flex-column flex-md-row my-2">
             <input

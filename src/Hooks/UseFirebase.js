@@ -1,3 +1,4 @@
+import { faL } from "@fortawesome/free-solid-svg-icons";
 import {
   GoogleAuthProvider,
   getAuth,
@@ -16,13 +17,14 @@ initializeAuthentication();
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading,setIsLoading] = useState(true);
+  const [adminLoading, setAdminLoading] = useState(true);
   const [authError, setAuthError] = useState('')
   const [admin, setAdmin] = useState(false);
 
 
   const Googleprovider = new GoogleAuthProvider();
   const auth = getAuth();
-console.log(user);
+
   /* crate account */
   const createwithUserEmail = (email, password, name, location, navigate) => {
     console.log(name);
@@ -98,6 +100,17 @@ console.log(user);
     const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+
+        setAdminLoading(true);
+          fetch(`http://localhost:5000/users/${user.email}`)
+            .then((res) => res.json())
+            .then((data) => {
+              setAdmin(data.admin)
+              setAdminLoading(false);
+
+            });
+      
+
       } else {
         setUser({});
       } 
@@ -107,12 +120,35 @@ console.log(user);
   }, []);
 
 
+  console.log("admin",admin);
+ /*  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+        setAdminLoading(true);
+        fetch(`https://hidden-fjord-28330.herokuapp.com/users/${user?.email}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setAdmin(data.admin);
+            setAdminLoading(false);
+          });
+      } else {
+      }
+      setLoading(false);
+    });
+  }, []); */
 
-  useEffect(() => {
-    fetch(`https://infinite-peak-08437.herokuapp.com/users/${user?.email}`)
+
+
+ /*  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user.email}}`)
         .then(res => res.json())
-        .then(data => setAdmin(data.admin))
-}, [user.email])
+        .then(data => {
+          console.log(data);
+         
+        })
+}, [user.email]) */
+
 
 
   /* Log out */
@@ -151,9 +187,11 @@ console.log(user);
     user,
     logOut,
     isLoading,
+    adminLoading,
     authError,
     admin
   };
 };
 
 export default useFirebase;
+
