@@ -62,7 +62,7 @@ const ScrenCare = () => {
               </div>
             </div>
           </Col>
-        </Row>
+        </Row>  
       </Container>
       <br />
       <br />

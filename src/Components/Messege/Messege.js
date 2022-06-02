@@ -56,7 +56,7 @@ const Appointment = () => {
             ></textarea>
           </div>
         </div>
-        <button className="mb-5 header-btn">Send Message</button>
+        <button style={{border: 'none'}} className="mb-5 header-btn">Send Message</button>
       </div>
     </div>
   );

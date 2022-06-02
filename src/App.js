@@ -22,6 +22,9 @@ import { useEffect, useState } from "react";
 import { ScaleLoader } from "react-spinners";
 import Welcome from "./Components/DashBord/Welcome";
 import Erro from "./Components/Sheared/Home/Erro";
+import OurStory from "./Components/Test/OurStory";
+import ServiceMenue from "./Components/ServiceMenue/ServiceMenue";
+import Blog from "./Components/ServiceMenue/Blog";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -133,6 +136,15 @@ function App() {
             </Routes>
 
             <Footer></Footer>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+             <Blog></Blog>
+            {/* <OurStory></OurStory> */}
+            <ServiceMenue></ServiceMenue>
           </Router>
         </AuthProvider>
       )}
