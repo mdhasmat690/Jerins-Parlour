@@ -55,13 +55,13 @@ const Header = () => {
                    DashBoard
                   </Link>
 
-                  <span style={{ color: "black" }} className="list-link">
+                  <span style={{ color: "black", marginRight: '2px'}} className="list-link">
                     {" "}
                     {user?.displayName}
                   </span>
 
                   {user?.email ? (
-                    <button onClick={logOut}>Logout</button>
+                    <button className="header_btn_logout" onClick={logOut}>Logout</button>
                   ) : (
                     <Link to="/googleLogin">
                       <button className="header-btn">Login</button>

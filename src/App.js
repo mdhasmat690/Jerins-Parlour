@@ -25,6 +25,7 @@ import Erro from "./Components/Sheared/Home/Erro";
 import OurStory from "./Components/Test/OurStory";
 import ServiceMenue from "./Components/ServiceMenue/ServiceMenue";
 import Blog from "./Components/ServiceMenue/Blog";
+import AllService from "./Components/Services/AllService";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -111,6 +112,14 @@ function App() {
                 }
               ></Route>
               <Route
+                path="allservice"
+                element={
+                  <PrivetRoute>
+                    <AllService />
+                  </PrivetRoute>
+                }
+              ></Route>
+              <Route
                 path="dashBord"
                 element={
                   <PrivetRoute>
@@ -139,6 +148,8 @@ function App() {
             <br />
             <br />
             <br />
+
+           
             <br />
             <br />
             <br />
