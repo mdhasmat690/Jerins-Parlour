@@ -82,7 +82,9 @@ const Services = () => {
         </div>
       )}
 
+      <Link style={{ textDecoration: "none", color: "black" }} to="/allservice">
       <button className="header-btn mt-5">More Service</button>
+      </Link>
       <br />
       <br />
     </div>

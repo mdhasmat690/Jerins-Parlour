@@ -3,6 +3,8 @@ import { Col, Container, Row } from "react-bootstrap";
 import banner from "../../../Image_Icon/Image/beautiful-young-asian-woman-touching-her-clean-face-with-fresh-healthy-skin-isolated-white-wall-beauty-cosmetics-facial-treatment-concept 1.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
+import Marquee from "react-fast-marquee";
 
 const Banner = () => {
   useEffect(() => {
@@ -11,8 +13,10 @@ const Banner = () => {
 
   return (
     <div style={{ backgroundColor: "#FFF8F5" }}>
+      <Marquee speed={40}>
+        Thank You for Coming Here ! I hope fell in best My first site ! and I hope you will give a review
+      </Marquee>
       <br />
-
       <Container>
         <Row className="container-width">
           <Col
@@ -39,7 +43,13 @@ const Banner = () => {
                     Purus commodo ipsum duis laoreet maecenas. Feugiat{" "}
                   </p>
                   <br />
-                  <button className="header-btn">Login</button>
+
+                  <Link
+                    style={{ textDecoration: "none", color: "black" }}
+                    to="/allservice"
+                  >
+                    <button className="header-btn">All services</button>
+                  </Link>
                 </div>
                 <br />
               </div>

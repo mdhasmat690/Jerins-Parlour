@@ -1,0 +1,36 @@
+.date{
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    line-height: 19px;
+    color: #000;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.blg_h{
+    font-family: EB Garamond;
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 55px;
+}
+
+.btn_p{
+    font-family: Jost;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    text-transform: none;
+}
+
+.details_stle{
+    text-align: justify;
+    font-family: Jost;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.7em;
+    text-align: left;
+    text-transform: none;
+    color: rgb(135, 132, 132);
+}

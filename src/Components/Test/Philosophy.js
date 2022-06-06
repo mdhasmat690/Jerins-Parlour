@@ -7,11 +7,9 @@ import svg4 from "../../Image_Icon/svg/svgexport-4.svg";
 import svg5 from "../../Image_Icon/svg/svgexport-5.svg";
 import svg6 from "../../Image_Icon/svg/svgexport-6.svg";
 import Test1 from "./Test1";
-import Philosophy from "./Philosophy";
-import Team from "./Team";
-import OurProduct from "./OurProduct";
+import { Link } from "react-router-dom";
 
-const philosophy = [
+const pphilosophy = [
   {
     name: "Green Beauty",
     descrip:
@@ -50,34 +48,45 @@ const philosophy = [
     img: svg6,
   },
 ];
-const OurStory = () => {
+const Philosophy = () => {
   return (
     <>
-      <div className="parallax">
-        <div className="container">
-          <br />
-          <br />
-          <br />
-          <br />
-          <div className="mt-5">
-            <h1 className="our_stye mt-t">Our Story</h1>
-            <p className="our_p mx-auto">
-              Our main goal was to create the best beauty studio in the world.
-              What could be a compromise in the best studio in the world?
-            </p>
-          </div>
+      <div className="container mt-5 dd">
+        <h1 className="my-3" style={{ fontWeight: "400" }}>
+          Philosophy
+        </h1>
+
+        <div className="row row-cols-1 row-cols-md-3 g-4">
+          {pphilosophy?.map((product, index) => (
+            <div key={index} className="col">
+              <div className="card h-100 border-0">
+                <img
+                  src={product.img}
+                  className="card-img-top mx-auto w-25"
+                  alt="..."
+                />
+                <div className="card-body">
+                  <h5 className="card-title">{product.name}</h5>
+                  <p style={{ color: "#878484" }} className="card-text">
+                    This is a longer card with supporting text below as a
+                    natural lead-in to additional content. This content is a
+                    little bit longer.
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
+
+        <Link
+          style={{ textDecoration: "none", color: "black" }}
+          to="/allservice"
+        >
+          <button className="header-btn">All services</button>
+        </Link>
       </div>
-
-      <Philosophy></Philosophy>
-
-      <Test1></Test1>
-
-      <Team></Team>
-
-      <OurProduct></OurProduct> 
     </>
   );
 };
 
-export default OurStory;
+export default Philosophy;

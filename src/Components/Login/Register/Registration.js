@@ -22,7 +22,6 @@ const Registration = () => {
   } = useForm("");
 
   const onSubmit = (e) => {
-    // e.preventDefault();
     if (e.password !== e.password2) {
       alert("password not match");
       return;
@@ -31,8 +30,6 @@ const Registration = () => {
     const name = e.firstName + " " + e.lastName;
     
     createwithUserEmail(e.email, e.password, name, location, navigate)
-    // e.target.value = " ";
-    console.log(e.email, e.password,name);
     reset(); 
   };
 

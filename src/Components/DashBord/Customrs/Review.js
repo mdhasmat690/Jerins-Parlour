@@ -32,10 +32,13 @@ const Review = () => {
 
   return (
     <div className="" style={{ backgroundColor: "#F4F7FC",marginBottom: '150px' }}>
+   
+      <div className="sbad" style={{ backgroundColor: "white"}}>
+
       <div className="mt-5">
+        <br />
         <h2>Review</h2>
       </div>
-      <div className="sbad" style={{ backgroundColor: "white"}}>
         
       <form className="a pt-4" onSubmit={handleSubmit(onSubmit)}>
         <input

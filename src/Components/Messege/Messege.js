@@ -5,9 +5,9 @@ import "./Messege.css";
 const Appointment = () => {
   return (
     <div style={{ backgroundColor: "#FFF8F5" }}>
+      <br />
       
       <h2 style={{fontSize: '34px',fontWeight: '700'}}>Let us handle your<br />project, professionally.</h2>
-      <br />
       <br />
       <br />
       <div data-aos="fade-up" className=" container background-style mb-4">

@@ -50,31 +50,29 @@ const Team = () => {
     <div style={{ backgroundColor: "white" }}>
       <div className="container mt-5 dd">
         <br />
-        <br />
 
-        <h1  className="our_story mb-5">
-          Our Team
-        </h1>
 
-        <div class="row row-cols-1 row-cols-md-4 g-4">
+        <h1 className="our_story mb-5">Our Team</h1>
+
+        <div className="row row-cols-1 row-cols-md-4 g-4">
           {outTema?.map((member, index) => (
-            <div key={index} class="col">
-              <div class="card h-100 border-0">
+            <div key={index} className="col">
+              <div className="card h-100 border-0">
                 <div style={{ backgroundColor: "#f6ebe7" }}>
                   <img
                     src={member.img}
-                    class="card-img-top mx-auto w-75"
+                    className="card-img-top mx-auto w-75"
                     alt="..."
                   />
                 </div>
-                <div class="card-body">
+                <div className="card-body">
                   <h1
                     style={{
                       fontFamily: "Jost",
                       fontSize: "16px",
                       fontWeight: "600",
                     }}
-                    class="card-title"
+                    className="card-title"
                   >
                     {member.name}
                   </h1>
@@ -96,7 +94,7 @@ const Team = () => {
           ))}
         </div>
       </div>
-      <OurProduct></OurProduct>
+      {/* <OurProduct></OurProduct> */}
     </div>
   );
 };

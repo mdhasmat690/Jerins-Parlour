@@ -9,26 +9,14 @@ import plus from "../../Image_Icon/plus 1.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import useAuth from "../../Hooks/UseAuth";
+import Marquee from "react-fast-marquee";
 
 const DashBord = () => {
   const { admin, user } = useAuth();
-  /* const [se,setSe] = useState(true)
-
-
-  
-  useEffect(() => {
-    fetch(`http://localhost:5000/users/${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setSe(data);
-      });
-  }, []); */
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
-
-  console.log("admin status", admin);
 
   return (
     <>
@@ -101,7 +89,7 @@ const DashBord = () => {
                         src={person}
                         alt=""
                       />
-                      manageService
+                      ManageService
                     </span>
                   </Link>
                   <br />
@@ -144,16 +132,39 @@ const DashBord = () => {
                   </Link>
                   <br />
                   <br />
+                  <Link
+                    className="link_color"
+                    style={{ textDecoration: "none" }}
+                    to={`/dashBord/deleteOrder`}
+                  >
+                    <span>
+                      <img
+                        style={{ marginRight: "10px" }}
+                        src={person}
+                        alt=""
+                      />
+                      DeleteOrder
+                    </span>
+                  </Link>
+                  <br />
+                  <br />
                 </div>
               )}
-
-              {/*     */}
             </div>
-            {/*  */}
+
             <div
               style={{ backgroundColor: "#F4F7FC" }}
               className="col-12 col-lg-10 py-2"
             >
+              {!admin && (
+                <Marquee style={{ color: "#1b60d3" }} speed={40}>
+                  If you want to admin role, Please type Email:
+                  mdhasmat690@gmail.com || Pass: 123456{" "}
+                  <span style={{ color: "red" }}> " " Note " "</span> : Please
+                  do not delete any product
+                </Marquee>
+              )}
+
               <Outlet></Outlet>
             </div>
           </div>

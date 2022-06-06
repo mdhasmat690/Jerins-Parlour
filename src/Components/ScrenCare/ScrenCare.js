@@ -3,10 +3,9 @@ import { Col, Container, Row } from "react-bootstrap";
 import engpic from "../../Image_Icon/Image/engin-akyurt-g-m8EDc4X6Q-unsplash 1.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 
 const ScrenCare = () => {
-
-  
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
@@ -19,16 +18,23 @@ const ScrenCare = () => {
       <br />
       <br />
       <Container>
-        <Row  className="container-width">
-          <Col data-aos="fade-right" style={{
+        <Row className="container-width">
+          <Col
+            data-aos="fade-right"
+            style={{
               display: "flex",
               alignItems: "center",
               textAlign: "left",
-            }} xs={12} md={6} lg={6} className="mb-2">
+            }}
+            xs={12}
+            md={6}
+            lg={6}
+            className="mb-2"
+          >
             <img className="b-style" src={engpic} alt="" />
           </Col>
           <Col
-          data-aos="fade-left"
+            data-aos="fade-left"
             style={{
               display: "flex",
               alignItems: "center",
@@ -44,9 +50,9 @@ const ScrenCare = () => {
                   Let us handle your <br /> screen{" "}
                   <span style={{ color: "#F63E7B" }}>Professionally</span>.
                 </h3>
-              
+
                 <p
-                className="my-3" 
+                  className="my-3"
                   style={{
                     fontSize: "14px",
                     lineHeight: "24px",
@@ -57,12 +63,17 @@ const ScrenCare = () => {
                   dolor sit amet, consectetur adipiscing elit. Purus commodo
                   ipsum.
                 </p>
-               
-                <button  className="header-btn my-2">Login</button>
+
+                <Link
+                  style={{ textDecoration: "none", color: "black" }}
+                  to="/ourStory"
+                >
+                  <button className="header-btn my-2">Login</button>
+                </Link>
               </div>
             </div>
           </Col>
-        </Row>  
+        </Row>
       </Container>
       <br />
       <br />

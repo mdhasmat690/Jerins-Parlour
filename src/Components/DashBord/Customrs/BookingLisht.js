@@ -13,7 +13,6 @@ const BookingLisht = () => {
       .then((res) => res.json())
       .then((data) => setOrderList(data));
   }, []);
-  console.log(orderlList);
   return (
     <div style={{ backgroundColor: "#F4F7FC" }}>
      <h2 className="mt-3">booking list</h2>

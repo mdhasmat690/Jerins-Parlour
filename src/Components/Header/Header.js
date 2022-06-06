@@ -12,7 +12,7 @@ const Header = () => {
     <div style={{ backgroundColor: "#FFF8F5" }}>
       <>
         {/* <Link to="/login">Login</Link> */}
-        <Navbar collapseOnSelect expand="lg" variant="dark">
+        <Navbar collapseOnSelect expand="lg" variant="light">
           <Container>
             <img style={{ width: "10%" }} src={jerin} alt="" />
             <Navbar.Toggle />
@@ -29,39 +29,46 @@ const Header = () => {
                   <Link
                     style={{ color: "#474747" }}
                     className="list-link"
-                    to="/login"
+                    to="/serviceMenue"
                   >
-                    test
+                    Service Menu
                   </Link>
+
                   <Link
                     style={{ color: "#474747" }}
                     className="list-link"
-                    to="/"
+                    to="/allservice"
                   >
-                    Our Team
+                    All services
                   </Link>
+
                   <Link
                     style={{ color: "#474747" }}
                     className="list-link"
-                    to="about"
+                    to="/ourStory"
                   >
-                    About Us
+                    Our Story
                   </Link>
                   <Link
                     style={{ color: "#474747" }}
                     className="list-link"
                     to="dashBord"
                   >
-                   DashBoard
+                    DashBoard
                   </Link>
 
-                  <span style={{ color: "black", marginRight: '2px'}} className="list-link">
+                  <span
+                    style={{ color: "black", marginRight: "2px" }}
+                    className="list-link"
+                  >
                     {" "}
                     {user?.displayName}
                   </span>
 
                   {user?.email ? (
-                    <button className="header_btn_logout" onClick={logOut}>Logout</button>
+                    <button className="header_btn_logout" onClick={logOut}>
+                      Logout
+                    </button>
                   ) : (
                     <Link to="/googleLogin">
                       <button className="header-btn">Login</button>

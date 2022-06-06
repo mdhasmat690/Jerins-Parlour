@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import Team from "./Team";
 import './Text.css'
 
 const Test1 = () => {
@@ -68,9 +67,6 @@ const Test1 = () => {
       </div>
 
       <br />
-      <br />
-      <br />
-      <Team></Team>
     </div>
   );
 };

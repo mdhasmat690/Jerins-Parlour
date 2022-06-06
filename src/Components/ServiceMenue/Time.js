@@ -12,7 +12,7 @@ const Time = () => {
             <img
               style={{ width: "15%" }}
               src={mobile}
-              class="card-img-top mx-auto"
+              className="card-img-top mx-auto"
               alt="..."
             />
             <div className="card-body">
@@ -31,11 +31,11 @@ const Time = () => {
             <img
               style={{ width: "15%" }}
               src={time}
-              class="card-img-top mx-auto"
+              className="card-img-top mx-auto"
               alt="..."
             />
             <div className="card-body">
-              <h5 className="card-title">Card title</h5>
+              <h5 className="card-title">Time</h5>
               <p className="card-text contuct_style">
                 Mon to Fri: 7:30 am — 1:00 am
                 <br />
@@ -51,11 +51,11 @@ const Time = () => {
             <img
               style={{ width: "15%" }}
               src={location}
-              class="card-img-top mx-auto"
+              className="card-img-top mx-auto"
               alt="..."
             />
             <div className="card-body">
-              <h5 className="card-title">Card title</h5>
+              <h5 className="card-title">Location</h5>
               <p className="card-text contuct_style">
                 105 Road, Birganj,Dinajpur;
                 <br />

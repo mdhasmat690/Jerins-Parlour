@@ -46,7 +46,6 @@ const Purches = () => {
           reset();
         }
       });
-      console.log(data); 
   };
   
 

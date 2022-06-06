@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+
 import "./Blog.css";
 
-const Blog = () => {
+const AllBlog = () => {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/blog")
       .then((res) => res.json())
-      .then((data) => setBlogs(data.slice(0, 4)));
+      .then((data) => setBlogs(data));
   }, []);
 
   return (
@@ -75,13 +76,11 @@ const Blog = () => {
             <ClipLoader size={40} color={"#123abc"} speedMultiplier={1.5} />
           </div>
         )}
-
-        <Link style={{ textDecoration: "none", color: "black" }} to="/allBlog">
-          <button className="blog_btn">VIEW ALL POST</button>
-        </Link>
+        <div className="pb-4"></div>
+       
       </div>
     </div>
   );
 };
 
-export default Blog;
+export default AllBlog;

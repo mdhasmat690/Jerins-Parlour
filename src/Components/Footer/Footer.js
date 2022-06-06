@@ -15,16 +15,16 @@ const Footer = () => {
               New DOHS, Mohakhali, Dhaka, Bangladesh
             </p>
           </div>
-          <div className="col-12 col-md-2 footer-style">
-            <h6 style={{color: 'black'}}>Company</h6>
+          <div className="col-12 col-md-2 footer-style  footer_t">
+            <h6 style={{color: 'white',fontWeight: '700'}}>Company</h6>
             <p>About</p>
             <p>Project</p>
             <p>Our Team</p>
             <p>Terms Conditions</p>
             <p>Submit Listing</p>
           </div>
-          <div className="col-12 col-md-2 justify-content-xl-center justify-content-xxl-center footer-style ">
-            <h6 style={{color: 'black'}}>Quick Links</h6>
+          <div className="col-12 col-md-2 justify-content-xl-center justify-content-xxl-center footer-style footer_t">
+            <h6 style={{color: 'white',fontWeight: '700'}}>Quick Links</h6>
             <p>Rentals</p>
             <p>Sales</p>
             <p>Contact</p>
@@ -32,7 +32,7 @@ const Footer = () => {
           </div>
           <div className="col-12 col-md-4 footer-style">
             <div className="w-100">
-              <h6 style={{color: 'black'}}>About us</h6>
+              <h6 style={{color: 'white',fontWeight: '700'}}>About us</h6>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus
                 commodo ipsum duis laoreet maecenas. Feugiat{" "}

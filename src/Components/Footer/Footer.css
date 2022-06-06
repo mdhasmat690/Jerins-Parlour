@@ -1,7 +1,16 @@
 .footer-style{
     text-align: left;
     color: white;
+
+    
    
+}
+
+.footer_t :hover{
+    transition: all 0.3s ease;
+	color: #ffffff;
+	padding-left: 8px;
+    cursor: pointer;
 }
 
 h6{

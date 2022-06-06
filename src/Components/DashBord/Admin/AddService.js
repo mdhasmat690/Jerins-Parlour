@@ -26,7 +26,6 @@ const AddService = () => {
           reset();
         }
       });
-    console.log(data);
   };
 
   return (
@@ -34,10 +33,11 @@ const AddService = () => {
       className=""
       style={{ backgroundColor: "#F4F7FC", marginBottom: "150px" }}
     >
-      <div className="mt-5">
+     
+      <div className="sbad" style={{ backgroundColor: "white" }}>
+      <div className="mt-5 pt-5">
         <h2>Added New Product</h2>
       </div>
-      <div className="sbad" style={{ backgroundColor: "white" }}>
         <form className="a pt-4" onSubmit={handleSubmit(onSubmit)}>
           <input
             className="input_style"

@@ -30,7 +30,6 @@ const MakeAdmin = () => {
         }
       });
     e.preventDefault();
-    console.log(e);
   };
 
   useEffect(() => {

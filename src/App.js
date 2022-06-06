@@ -26,6 +26,10 @@ import OurStory from "./Components/Test/OurStory";
 import ServiceMenue from "./Components/ServiceMenue/ServiceMenue";
 import Blog from "./Components/ServiceMenue/Blog";
 import AllService from "./Components/Services/AllService";
+import CustomrsReview from "./Components/Test/CustomrsReview";
+import DeleteOrder from "./Components/DashBord/Customrs/DeleteOrder";
+import DetailsBlog from "./Components/ServiceMenue/DetailsBlog";
+import AllBlog from "./Components/ServiceMenue/AllBlog";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -34,8 +38,6 @@ function App() {
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
-
-  console.log(loading);
 
   return (
     <div className="App">
@@ -52,7 +54,6 @@ function App() {
         <AuthProvider>
           <Router>
             <Header></Header>
-            {/* <Home></Home> */}
 
             <Routes>
               <Route path="/" element={<Home />} />
@@ -87,6 +88,10 @@ function App() {
                 <Route
                   path="/dashBord/review"
                   element={<Review></Review>}
+                ></Route>
+                <Route
+                  path="/dashBord/deleteOrder"
+                  element={<DeleteOrder></DeleteOrder>}
                 ></Route>
                 <Route
                   path="/dashBord/bookingLisht"
@@ -131,6 +136,12 @@ function App() {
                 path="registration"
                 element={<Registration></Registration>}
               />
+              <Route
+                path="serviceMenue"
+                element={<ServiceMenue></ServiceMenue>}
+              />
+              <Route path="ourStory" element={<OurStory></OurStory>} />
+              <Route path="allBlog" element={<AllBlog></AllBlog>} />
 
               <Route
                 path="/purches/:id"
@@ -140,22 +151,19 @@ function App() {
                   </PrivetRoute>
                 }
               />
+              <Route
+                path="/detailsBlog/:id"
+                element={
+                  <PrivetRoute>
+                    <DetailsBlog />
+                  </PrivetRoute>
+                }
+              />
 
               <Route path="*" element={<Erro />} />
             </Routes>
 
             <Footer></Footer>
-            <br />
-            <br />
-            <br />
-
-           
-            <br />
-            <br />
-            <br />
-             <Blog></Blog>
-            {/* <OurStory></OurStory> */}
-            <ServiceMenue></ServiceMenue>
           </Router>
         </AuthProvider>
       )}
