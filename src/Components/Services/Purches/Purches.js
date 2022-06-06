@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useAuth from "../../../Hooks/UseAuth";
-import './purches.css';
+import "./purches.css";
 import Swal from "sweetalert2";
 
 const Purches = () => {
   const { id } = useParams();
-  const {user} = useAuth()
+  const { user } = useAuth();
   const [product, setProduct] = useState({});
   const { register, handleSubmit, reset } = useForm();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/services/${id}`)
+    fetch(`https://dry-journey-03591.herokuapp.com/services/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
       });
   }, [id]);
 
-
   useEffect(() => {
     reset();
   }, [product]);
 
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/purches", {
+    fetch("https://dry-journey-03591.herokuapp.com/purches", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -34,27 +33,25 @@ const Purches = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         if (result.insertedId) {
           Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Your order has been send',
+            position: "top-end",
+            icon: "success",
+            title: "Your order has been send",
             showConfirmButton: false,
-            timer: 1500
-          })
+            timer: 1500,
+          });
           reset();
         }
       });
   };
-  
 
   return (
     <div
       className="container"
       style={{ marginTop: "30px", backgroundColor: "#FFFFFF" }}
     >
-      <div style={{width: '350px'}} className=" mx-auto">
+      <div style={{ width: "350px" }} className=" mx-auto">
         <div>
           <img src={product.img} className="card-img-top mt-4 w-25" alt="..." />
 
@@ -68,60 +65,59 @@ const Purches = () => {
             <span style={{ color: "#F63E7B", fontSize: "17px" }}>
               $ {product.price}
             </span>
-            <p
-              style={{ fontSize: "", lineHeight: " " }}
-              className="card-text"
-            >
+            <p style={{ fontSize: "", lineHeight: " " }} className="card-text">
               {product.desc}
             </p>
           </div>
         </div>
-       
 
-        <form  onSubmit={handleSubmit(onSubmit)}>
-            <input
-              className="purche_style mt-3"
-              defaultValue={user?.displayName}
-              {...register("name")}
-            />
-            <input
-              className="purche_style mt-3"
-              defaultValue={user?.email}
-              {...register("email")}
-            />
-            <input
-              className="purche_style mt-3 mx-auto "
-              defaultValue={product?.name}
-              {...register("productName", { required: true })}
-            />
-            <input
-              className="purche_style mt-3"
-              defaultValue={product?.desc}
-              placeholder="price"
-              {...register("price", { required: true })}
-            />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input
+            className="purche_style mt-3"
+            defaultValue={user?.displayName}
+            {...register("name")}
+          />
+          <input
+            className="purche_style mt-3"
+            defaultValue={user?.email}
+            {...register("email")}
+          />
+          <input
+            className="purche_style mt-3 mx-auto "
+            defaultValue={product?.name}
+            {...register("productName", { required: true })}
+          />
+          <input
+            className="purche_style mt-3"
+            defaultValue={product?.desc}
+            placeholder="price"
+            {...register("price", { required: true })}
+          />
 
-            <input
-              className="purche_style h-5 mt-3"
-              defaultValue=""
-              placeholder="phone number"
-              {...register("phone", { required: true })}
-              required
-            />
-            <input
-              className="purche_style mt-3"
-              defaultValue=""
-              placeholder="location"
-              {...register("location", { required: true })}
-              required
-            />
-            <br />
-            <br />
-            <button className="mb-5 btn_service_style" type="submit" variant="contained">
-              purches
-            </button>
-          </form>
-
+          <input
+            className="purche_style h-5 mt-3"
+            defaultValue=""
+            placeholder="phone number"
+            {...register("phone", { required: true })}
+            required
+          />
+          <input
+            className="purche_style mt-3"
+            defaultValue=""
+            placeholder="location"
+            {...register("location", { required: true })}
+            required
+          />
+          <br />
+          <br />
+          <button
+            className="mb-5 btn_service_style"
+            type="submit"
+            variant="contained"
+          >
+            purches
+          </button>
+        </form>
       </div>
     </div>
   );

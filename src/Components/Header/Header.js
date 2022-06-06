@@ -1,9 +1,8 @@
 import React from "react";
-import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
+import {  Container, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import jerin from "../../Image_Icon/Group 33092.png";
 import useAuth from "../../Hooks/UseAuth";
-// import banner from "../../Image_Icon/Image/beautiful-young-asian-woman-touching-her-clean-face-with-fresh-healthy-skin-isolated-white-wall-beauty-cosmetics-facial-treatment-concept 1.png";
 import "./Header.css";
 
 const Header = () => {
@@ -11,7 +10,6 @@ const Header = () => {
   return (
     <div style={{ backgroundColor: "#FFF8F5" }}>
       <>
-        {/* <Link to="/login">Login</Link> */}
         <Navbar collapseOnSelect expand="lg" variant="light">
           <Container>
             <img style={{ width: "10%" }} src={jerin} alt="" />

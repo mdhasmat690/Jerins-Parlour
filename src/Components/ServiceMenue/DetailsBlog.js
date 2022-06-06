@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "aos/dist/aos.css";
-import { Link, useParams } from "react-router-dom";
-import Marquee from "react-fast-marquee";
+import { useParams } from "react-router-dom";
 import "./DetalsBlog.css";
 import hh from "../../Image_Icon/Image/Group-159.webp";
 import mask from "../../Image_Icon/Image/Mask-Group-1@1.webp";
@@ -14,13 +13,12 @@ const DetailsBlog = () => {
   const [blogs, setBlogs] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/blog/${id}`)
+    fetch(`https://dry-journey-03591.herokuapp.com/blog/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBlogs(data);
       });
   }, [id]);
-  console.log(blogs);
 
   return (
     <div>

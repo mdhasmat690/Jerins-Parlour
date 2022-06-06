@@ -3,31 +3,26 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/UseAuth";
 import "./google.css";
-import Swal from "sweetalert2";
-
 
 const GoogleLogin = () => {
-  const { signInWithGoogle, signInPassword, authError,user } = useAuth();
-  const location = useLocation()
-  const navigate = useNavigate()
+  const { signInWithGoogle, signInPassword } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
-    watch,
+
     formState: { errors },
   } = useForm();
 
   const onSubmit = (e) => {
-    signInPassword(e.email, e.password,location, navigate);
-    console.log(e);
+    signInPassword(e.email, e.password, location, navigate);
   };
 
-
- 
- const googleLogin = () =>{
-  signInWithGoogle(location,navigate)
-}
+  const googleLogin = () => {
+    signInWithGoogle(location, navigate);
+  };
 
   return (
     <div className="m-4">

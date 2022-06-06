@@ -63,7 +63,6 @@ const Registration = () => {
     })
   }
 
-console.log(authError);
   useEffect(() => {
     AOS.init({ duration: 100 });
   }, []);

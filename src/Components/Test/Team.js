@@ -1,5 +1,4 @@
 import React from "react";
-import OurProduct from "./OurProduct";
 
 const outTema = [
   {
@@ -94,7 +93,6 @@ const Team = () => {
           ))}
         </div>
       </div>
-      {/* <OurProduct></OurProduct> */}
     </div>
   );
 };

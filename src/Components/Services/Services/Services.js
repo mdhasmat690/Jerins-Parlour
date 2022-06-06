@@ -8,7 +8,7 @@ const Services = () => {
   const [service, setService] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/services?limit=3")
+    fetch("https://dry-journey-03591.herokuapp.com/services?limit=3")
       .then((res) => res.json())
       .then((data) => {
         setService(data);

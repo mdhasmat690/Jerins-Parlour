@@ -1,5 +1,3 @@
-
-
 const Welcome = () => {
     return (
         <div className="mt-3 mb-5">

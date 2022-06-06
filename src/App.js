@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Header from "./Components/Header/Header";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -7,7 +6,6 @@ import Footer from "./Components/Footer/Footer";
 import GoogleLogin from "./Components/Login/GoogleLogin";
 import Registration from "./Components/Login/Register/Registration";
 import AuthProvider from "./Context/AuthProvider";
-import About from "./Components/About/About";
 import PrivetRoute from "./Components/Login/Privet_Route/PrivetRoute";
 import DashBord from "./Components/DashBord/DashBord";
 import BookingLisht from "./Components/DashBord/Customrs/BookingLisht";
@@ -24,9 +22,7 @@ import Welcome from "./Components/DashBord/Welcome";
 import Erro from "./Components/Sheared/Home/Erro";
 import OurStory from "./Components/Test/OurStory";
 import ServiceMenue from "./Components/ServiceMenue/ServiceMenue";
-import Blog from "./Components/ServiceMenue/Blog";
 import AllService from "./Components/Services/AllService";
-import CustomrsReview from "./Components/Test/CustomrsReview";
 import DeleteOrder from "./Components/DashBord/Customrs/DeleteOrder";
 import DetailsBlog from "./Components/ServiceMenue/DetailsBlog";
 import AllBlog from "./Components/ServiceMenue/AllBlog";
@@ -108,14 +104,7 @@ function App() {
               </Route>
 
               <Route path="googleLogin" element={<GoogleLogin></GoogleLogin>} />
-              <Route
-                path="about"
-                element={
-                  <PrivetRoute>
-                    <About />
-                  </PrivetRoute>
-                }
-              ></Route>
+
               <Route
                 path="allservice"
                 element={

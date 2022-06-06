@@ -4,7 +4,6 @@
   outline: none;
   width: 40%;
   height: 40px;
-  /* margin-left: -50%; */
 }
 
 .input_text {
@@ -26,32 +25,28 @@
   border-radius: 5px;
 }
 
-.sbad{
+.sbad {
   margin-left: 50px;
   width: 80%;
   border-radius: 10px;
 }
 
-.a ::placeholder{
+.a ::placeholder {
+  left: 384px;
 
-left: 384px;
-
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 19px;
-color: #C9C9C9;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #c9c9c9;
 }
 
-.service_style{
- 
+.service_style {
+  height: 24px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
 
-height: 24px;
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 24px;
-
-
-color: #232323;
+  color: #232323;
 }

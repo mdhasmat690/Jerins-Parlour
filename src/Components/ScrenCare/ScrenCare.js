@@ -68,7 +68,7 @@ const ScrenCare = () => {
                   style={{ textDecoration: "none", color: "black" }}
                   to="/ourStory"
                 >
-                  <button className="header-btn my-2">Login</button>
+                  <button className="header-btn my-2">Our History</button>
                 </Link>
               </div>
             </div>

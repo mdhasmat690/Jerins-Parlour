@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import './Text.css'
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "./Text.css";
 
 const Test1 = () => {
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+  }, []);
   return (
     <div style={{ backgroundColor: "#f6ebe7" }}>
       <div className="container mt-5">
@@ -18,7 +23,6 @@ const Test1 = () => {
                 display: "flex",
                 alignItems: "center",
                 textAlign: "left",
-                
               }}
               xs={12}
               md={6}
@@ -37,7 +41,6 @@ const Test1 = () => {
                 display: "flex",
                 alignItems: "center",
                 textAlign: "left",
-                
               }}
               xs={12}
               md={6}
@@ -58,7 +61,6 @@ const Test1 = () => {
                   </p>
 
                   <h4>– Sopna Islam</h4>
-
                 </div>
               </div>
             </Col>

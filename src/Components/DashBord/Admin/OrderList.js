@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { BeatLoader, ScaleLoader } from "react-spinners";
+import { BeatLoader} from "react-spinners";
 import Swal from "sweetalert2";
 
 const OrderList = () => {
   const [products, setProducts] = useState();
 
   useEffect(() => {
-    fetch("http://localhost:5000/purches")
+    fetch("https://dry-journey-03591.herokuapp.com/purches")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
  
 
    const shippedOrder = (id) => {
-    fetch(`http://localhost:5000/purches/${id}`, {
+    fetch(`https://dry-journey-03591.herokuapp.com/purches/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

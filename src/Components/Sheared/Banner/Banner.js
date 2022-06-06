@@ -61,7 +61,7 @@ const Banner = () => {
             style={{
               display: "flex",
               alignItems: "center",
-              textAlign: "left",
+              textAlign: "right",
             }}
             xs={12}
             md={6}

@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import "./AddService.css";
 import Swal from "sweetalert2";
@@ -8,7 +7,7 @@ const AddService = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/services", {
+    fetch("https://dry-journey-03591.herokuapp.com/services", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

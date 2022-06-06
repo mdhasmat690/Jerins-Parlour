@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
+import React, { useEffect} from "react";
 import { Link, Outlet } from "react-router-dom";
 import "./Dashboard.css";
 import person from "../../Image_Icon/person-add-outline 1.png";
-import grid from "../../Image_Icon/grid-outline 1.png";
-import group1 from "../../Image_Icon/Group 1343.png";
-import plus from "../../Image_Icon/plus 1.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import useAuth from "../../Hooks/UseAuth";
 import Marquee from "react-fast-marquee";
 
 const DashBord = () => {
-  const { admin, user } = useAuth();
+  const { admin} = useAuth();
 
   useEffect(() => {
     AOS.init({ duration: 1000 });

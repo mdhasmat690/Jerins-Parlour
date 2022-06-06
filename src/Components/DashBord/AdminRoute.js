@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { BarLoader, ClipLoader } from "react-spinners";
+import { BarLoader} from "react-spinners";
 import useAuth from "../../Hooks/UseAuth";
 
 const AdminRoute = ({ children}) => {

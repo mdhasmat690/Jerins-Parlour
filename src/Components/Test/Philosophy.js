@@ -6,7 +6,6 @@ import svg3 from "../../Image_Icon/svg/svgexport-3.svg";
 import svg4 from "../../Image_Icon/svg/svgexport-4.svg";
 import svg5 from "../../Image_Icon/svg/svgexport-5.svg";
 import svg6 from "../../Image_Icon/svg/svgexport-6.svg";
-import Test1 from "./Test1";
 import { Link } from "react-router-dom";
 
 const pphilosophy = [

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { ClipLoader, HashLoader, MoonLoader } from "react-spinners";
+import { ClipLoader } from "react-spinners";
 import Swal from "sweetalert2";
 
 const ManageService = () => {
   const [service, setService] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://dry-journey-03591.herokuapp.com/services")
       .then((res) => res.json())
       .then((data) => {
         setService(data);
@@ -15,22 +15,17 @@ const ManageService = () => {
   }, []);
 
   const handleDelete = (id) => {
-    // const proceed = window.confirm("Are you sure you want to delete");
-
     Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    })
-    .then((result) => {
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
       if (result.isConfirmed) {
-
-
-        fetch(`http://localhost:5000/services/${id}`, {
+        fetch(`https://dry-journey-03591.herokuapp.com/services/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -41,13 +36,9 @@ const ManageService = () => {
             }
           });
 
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
       }
-    })
+    });
   };
 
   return (

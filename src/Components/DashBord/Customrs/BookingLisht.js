@@ -8,7 +8,7 @@ const BookingLisht = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    const url = `http://localhost:5000/purches/${user.email}`;
+    const url = `https://dry-journey-03591.herokuapp.com/purches/${user.email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setOrderList(data));

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import useAuth from '../../../Hooks/UseAuth';
-import { ClipLoader, HashLoader, MoonLoader } from "react-spinners";
+import { ClipLoader} from "react-spinners";
 import Swal from "sweetalert2";
 
 
@@ -12,14 +12,13 @@ const DeleteOrder = () => {
     const [orderlList, setOrderList] = useState([]);
   
     useEffect(() => {
-      const url = `http://localhost:5000/purches/${user.email}`;
+      const url = `https://dry-journey-03591.herokuapp.com/purches/${user.email}`;
       fetch(url)
         .then((res) => res.json())
         .then((data) => setOrderList(data));
     }, []);
 
     const handleDelete = (id) => {
-        // const proceed = window.confirm("Are you sure you want to delete");
     
         Swal.fire({
           title: 'Are you sure?',
@@ -34,7 +33,7 @@ const DeleteOrder = () => {
           if (result.isConfirmed) {
     
     
-            fetch(`http://localhost:5000/purches/${id}`, {
+            fetch(`https://dry-journey-03591.herokuapp.com/purches/${id}`, {
               method: "DELETE",
             })
               .then((res) => res.json())

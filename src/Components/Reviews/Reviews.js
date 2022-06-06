@@ -1,4 +1,3 @@
-import { getAllByDisplayValue } from "@testing-library/react";
 import React from "react";
 
 import AliceCarousel from "react-alice-carousel";
@@ -85,7 +84,7 @@ const Reviews = () => {
     <div style={{ backgroundColor: "#FFF8F5" }}>
       <div className="container">
         <AliceCarousel mouseTracking responsive={responsive}>
-          {review.map((skin,index) => (
+          {review.map((skin, index) => (
             <div key={skin.name}>
               <div style={{ backgroundColor: "white", marginRight: "35px" }}>
                 <div
@@ -108,27 +107,29 @@ const Reviews = () => {
                     <span>{skin.name}</span>
                   </div>
                 </div>
-                <div style={{
-                      display: "flex",
-                      color: '#707070',
-                      fontSize: '17px',
-                      justifyContent: "left",
-                      textAlign: "left",
-                    }} className="card-body">
-
-                      <div>
-                  <p className="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                  <Rating
-                    initialRating={skin.ratting}
-                    emptySymbol="far fa-star icon-color"
-                    fullSymbol="fas fa-star icon-color"
-                    readonly
-                  ></Rating>
+                <div
+                  style={{
+                    display: "flex",
+                    color: "#707070",
+                    fontSize: "17px",
+                    justifyContent: "left",
+                    textAlign: "left",
+                  }}
+                  className="card-body"
+                >
+                  <div>
+                    <p className="card-text">
+                      Some quick example text to build on the card title and
+                      make up the bulk of the card's content.
+                    </p>
+                    <Rating
+                      initialRating={skin.ratting}
+                      emptySymbol="far fa-star icon-color"
+                      fullSymbol="fas fa-star icon-color"
+                      readonly
+                    ></Rating>
+                  </div>
                 </div>
-                </div>  
               </div>
             </div>
           ))}
